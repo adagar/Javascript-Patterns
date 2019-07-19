@@ -1,4 +1,4 @@
-class Car {
+class Suv {
     constructor(doors, engine, color){
             this.doors = doors;
             this.engine = engine;
@@ -17,7 +17,7 @@ class suvFactory {
     }
 }
 
-class Suv {
+class Car {
     constructor(doors, engine, color){
             this.doors = doors;
             this.engine = engine;
