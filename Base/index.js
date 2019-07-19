@@ -1,21 +1,21 @@
-class Suv {
-    constructor(doors, engine, color){
-            this.doors = doors;
-            this.engine = engine;
-            this.color = color;
-    }
-}
+// class Suv {
+//     constructor(doors, engine, color){
+//             this.doors = doors;
+//             this.engine = engine;
+//             this.color = color;
+//     }
+// }
 
-class suvFactory {
-    createSuv(type){
-        switch(type){
-            case 'CX5':
-                return new Car(4, 'V8', 'blue');
-            case 'wrangler':
-                return new Car(6, "v10", 'yellow');
-        }
-    }
-}
+// class suvFactory {
+//     createSuv(type){
+//         switch(type){
+//             case 'CX5':
+//                 return new Car(4, 'V8', 'blue');
+//             case 'wrangler':
+//                 return new Car(6, "v10", 'yellow');
+//         }
+//     }
+// }
 
 class Car {
     constructor(doors, engine, color){
@@ -36,7 +36,13 @@ class carFactory {
     }
 }
 
-const mySuvFactory = new suvFactory();
+
+let carMixin = {
+    revEngine(){
+        console.log(`The ${this.engine} is doing vroom vroom`);
+    }
+}
+// const mySuvFactory = new suvFactory();
 const myCarFactory = new carFactory();
 
 const autoManufacturer = (type, model) => {
@@ -49,8 +55,8 @@ const autoManufacturer = (type, model) => {
 
 }
 
-const cx5 = autoManufacturer('suv', 'wrangler');
-const civic = autoManufacturer('car', 'civic');
+Object.assign(Car.prototype, carMixin);
 
-console.log(civic);
-console.log(cx5);
+const cx5 = autoManufacturer('car', 'civic');
+
+cx5.revEngine();
